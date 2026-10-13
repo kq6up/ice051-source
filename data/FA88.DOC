@@ -1,0 +1,1010 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                         N A U T I C A L   A L M A N A C 
+                          V E R S I O N   2 . 0 0 . 8 8 
+
+                                   B Y   T H E 
+                     U S   N A V A L   O B S E R V A T O R Y 
+
+
+
+
+                U.S. Naval Observatory Nautical Almanac Office
+                          Floppy Almanac User's Guide
+
+
+1. Introduction
+
+The Floppy Almanac is a program for MS-DOS based microcomputers which
+reproduces the data contained in the major sections of the Astronomical, Air, 
+and Nautical Almanacs to full precision.  The time span of each edition of the
+Floppy Almanac is 400 days: one calendar year plus about two weeks overlap into
+each of the adjacent years.
+
+To properly use the Floppy Almanac, you must be familiar with basic
+astronomical terminology, coordinate systems, and conventions.  You should be
+familiar with the contents and use of either the Astronomical Almanac, the
+Nautical Almanac, or the Air Almanac, depending on your particular application. 
+
+
+To assist you with some of the specialized astronomical terminology, however, a
+glossary is provided in Appendix B of this document.
+
+All of the necessary files for the Floppy Almanac are contained on a single
+5Ä1/4" DSDD disk.  The program is compatible with MSÄDOS 2.00 and higher and
+runs on the IBM PC, XT, and AT computers and compatible machines.  There are 8
+files in this version of the Floppy Almanac.  They are:
+
+MESSIER.CAT    Messier catalog
+RADIO1.CAT     extragalactic radio sources
+STAR1.CAT      FK5 star catalog
+FA.DFT         ASCII file of initial values
+CATALOG.EXE    catalog generation utility
+FAyy.EXE       the main program
+READ.ME        more information
+SAMPLE.TXT     sample input for generating catalogs
+
+The first file in the list is the executable module comprising the Floppy
+Almanac, and is the only essential file.  Its file name is formed by replacing
+the characters yy with the last two digits of its year, for example, FA88.EXE
+for the 1988 edition of the Floppy Almanac.  It is executed by simply typing
+the first four characters, that is, "fa88" (or"FA88") at the DOS prompt for the
+1988 Floppy Almanac or the corresponding codes for other years.  The module
+will then be read from the disk into the computer's memory and the Floppy
+Almanac masthead and main menu will appear on the screen.  Once the main menu
+appears the disk can be removed from the drive; no further disk reads are
+required for standard execution.
+
+The other files on the disk are auxiliary files, which are not used by most
+applications.  Most of these files relate to the optional facility for
+redefining the star catalog to be used by the Floppy Almanac and are described
+in detail below.
+
+Version 2.00.xx of the Floppy Almanac is written in FORTRAN and assembly
+language and has been compiled to take advantage of an 8087 or 80287 numeric
+
+
+   1988 US Naval Observatory Nautical Floppy Almanac Version 2.00.88  Page  1
+
+coprocessor, if one is installed in your computer.  A coprocessor is not
+required; however, the Floppy Almanac will run up to 5 times faster with a
+coprocessor.  The program requires about 180k bytes of RAM, therefore a machine
+with at least 256k bytes of RAM will be required, depending on the version of
+MSÄDOS in use.  The program does not use any screen graphics -- all output is
+in text mode and the monitor and keyboard are used as a "dumb terminal".
+
+
+2. Getting Started -- Sample Run
+
+Since the Floppy Almanac is menu and prompt driven, the novice user can usually
+"feel" his way around its various options and obtain useful information.  One
+can become fairly proficient in using the Floppy Almanac simply through a
+series of trial-and-error runs.  Nevertheless, there is a significant amount of
+information about how the Floppy Almanac works which is not obvious but which
+is quite important for all but the most casual user.  This information is
+presented below.
+
+The following is a simple, but typical, run of the Floppy Almanac which
+illustrates its use.  This run produces the rise, set, and transit times of
+Mars for five consecutive dates.  You may wish to duplicate this run to get
+acquainted with the Floppy Almanac.  Data which you must type appears below
+underlined.  Menu selections are made using the 'F - keys' on the computer
+keyboard.
+
+This run is from version 2.00.88.  This run is for 1988; if you have a Floppy
+Almanac for a different year replace each occurrence of "88" below with the
+last two digits of the appropriate year.  Obviously for years other than 1988
+the output data values will be different than those shown but the input and
+output formats will be the same.
+
+Start the Floppy Almanac by typing "fa88".
+
+ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+º    U.S. Naval Observatory        º
+º    Nautical Almanac Office       º
+ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º Floppy Almanac for the year 1988 º
+ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+Version 2.00.88
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³ The file of default initial values ³
+³     FA.DFT   ³³   has been read.   ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+Press any key to continue.
+
+
+   1988 US Naval Observatory Nautical Floppy Almanac Version 2.00.88  Page  2
+ÉÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+º F1 ³ Initial Values      º F2 ³ File Output         º
+ÇÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ×ÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º F3 ³ Positions           º F4 ³ Physical Ephemeris  º
+ÇÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ×ÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º F5 ³ Sidereal Time       º F6 ³ Rise & Set Times    º
+ÇÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ×ÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º F7 ³ Navigation          º F8 ³ Daily Configuration º
+ÇÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ×ÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º F9 ³ Change Catalog      º F10³ Quit                º     
+ÈÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+Pressing any key (such as the spacebar) will remove the message box and the
+Floppy Almanac is ready to begin a calculation.
+
+          ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+          º    U.S. Naval Observatory        º
+          º    Nautical Almanac Office       º 
+          ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+          º Floppy Almanac for the year 1988 º
+          ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+                   Version 2.00.88
+ÉÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+º F1 ³ Initial Values      º F2 ³ File Output         º
+ÇÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ×ÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º F3 ³ Positions           º F4 ³ Physical Ephemeris  º
+ÇÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ×ÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º F5 ³ Sidereal Time       º F6 ³ Rise & Set Times    º
+ÇÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ×ÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º F7 ³ Navigation          º F8 ³ Daily Configuration º
+ÇÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ×ÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º F9 ³ Change Catalog      º F10³ Quit                º
+ÈÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+Typically, a calculation will begin with changing some of the initial values. 
+To do this, press the F1 key.
+
+ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+º    U.S. Naval Observatory        º
+º    Nautical Almanac Office       º
+ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º Floppy Almanac for the year 1988 º
+ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+Version 2.00.88
+* * Initial Values * *Press F key to modify:
+
+
+   1988 US Naval Observatory Nautical Floppy Almanac Version 2.00.88  Page  3
+ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+º F1 Date               ³ 880601.000000  º
+º F2 Latitude           ³     +39.00     º
+º F3 Longitude          ³      -77.00    º
+º F4 Tabulation Interval³     +1.000000  º
+º F5 Number of Lines    ³     5          º
+º F6 Time Zone          ³     -4         º
+ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º F7 Accept values      ³                º
+ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+Pressing F1 again will allow us to change the starting date for the
+calculation.  Here it is being changed to July 4, 1988.
+
+ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+º    U.S. Naval Observatory        º
+º    Nautical Almanac Office       º
+ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º Floppy Almanac for the year 1988 º
+ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+Version 2.00.88
+Enter starting date [JD or yymmdd.hhmmss]: 880704<enter>
+ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+º    U.S. Naval Observatory        º
+º    Nautical Almanac Office       º
+ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º Floppy Almanac for the year 1988 º
+ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+Version 2.00.88* * Initial Values * *Press F key to modify:
+
+ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+º F1 Date               ³ 880704.000000  º
+º F2 Latitude           ³     +39.00     º
+º F3 Longitude          ³      -77.00    º
+º F4 Tabulation Interval³     +1.000000  º
+º F5 Number of lines    ³     5          º
+º F6 Time Zone          ³     -4         º
+ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º F7 Accept values      ³                º
+ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+Next, press F7 to accept the new initial values.
+
+ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+º    U.S. Naval Observatory        º
+º    Nautical Almanac Office       º
+ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º Floppy Almanac for the year 1988 º
+ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+Version 2.00.88
+
+
+   1988 US Naval Observatory Nautical Floppy Almanac Version 2.00.88  Page  4
+ÉÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+º F1 ³ Initial Values      º F2 ³ File Output         º
+ÇÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ×ÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º F3 ³ Positions           º F4 ³ Physical Ephemeris  º
+ÇÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ×ÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º F5 ³ Sidereal Time       º F6 ³ Rise & Set Times    º
+ÇÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ×ÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º F7 ³ Navigation          º F8 ³ Daily Configuration º
+ÇÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ×ÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º F9 ³ Change Catalog      º F10³ Quit                º
+ÈÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+Now pressing F6 will select Rise & Set Times, and a prompt will be presented
+for the object name.
+ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+º    U.S. Naval Observatory        º
+º    Nautical Almanac Office       º
+ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º Floppy Almanac for the year 1988 º
+ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+Enter object name: mars<enter>
+
+ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+º    U.S. Naval Observatory        º
+º    Nautical Almanac Office       º
+ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º Floppy Almanac for the year 1988 º
+ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+Topocentric Ephemeris of MARS   |  for Greenwich Meridian | for location: 
+Longitude W 77 00.0    Latitude N 39 00.0   Time Zone UT-4   Ephemeris Transit
+Date  | TDT    JD   TDT Time | Rise (Azm)             Trans (Alt)   Set (Azm)
+                              h  m  s   h  m   ø       h  m   ø    h  m    ø
+1988 Jul 4 2447346.707497     4 58 47.7 0 21 ( 96)     6 06 (s46) 11 52 (264)
+1988 Jul 5 2447347.706111     4 56 48.0 0 18 ( 96)     6 04 (s46) 11 51 (264)
+1988 Jul 6 2447348.704713     4 54 47.2 0 16 ( 96)     6 02 (s46) 11 49 (264)
+1988 Jul 7 2447349.703301     4 52 45.2 0 13 ( 96)     6 00 (s46) 11 48 (264)
+1988 Jul 8 2447350.701874     4 50 42.0 0 11 ( 95)     5 58 (s46) 11 46 (265)
+Pause - Please enter a blank line (to continue) or a DOS command.
+
+
+3. Supported Celestial Objects
+
+One of the features of the Floppy Almanac is that the most common tabulations
+are supported for a wide range of celestial objects.  For example, "F6 Rise &
+Set Times" can be used not only for the Sun and Moon, but also for planets or
+stars.  The example above shows a tabulation for Mars, but the object could
+have been Vega, the Moon, Pluto, Canopus, Eta Tauri, etc.
+
+For the solar system, the Floppy Almanac contains information on the positions
+of all nine major planets plus the Sun and Moon.  The information is internally
+stored as a Chebyshev series for each of three position vector components (with
+respect to the solar system barycenter) for each of the eleven solar system
+bodies.  The series "work" only within the 400-day window of time which defines
+
+
+   1988 US Naval Observatory Nautical Floppy Almanac Version 2.00.88  Page  5
+the span of validity for the Floppy Almanac disk.  If, during a tabulation, a
+date outside this span is encountered, the error message
+'Julian date before first allowed date.' or'Julian date after last allowed
+date.
+is displayed and the tabulation is terminated.
+
+The basic catalog of stars consists of data for the brightest 199 stars in the
+FK5 catalog, plus one navigational star (Sabik: Eta Ophiuchi) not in the FK5. 
+Stars as faint as third magnitude are represented, although the catalog is not
+complete at this level.  The catalog is stored within the Floppy Almanac module
+and consists of the names, epoch J2000.0 position and proper motion, parallax
+and other information for each star.
+
+This basic 200 star catalog can be replaced.  One of the main menu choices, "F9
+Change Catalog", can be used to specify an external disk file to be used in
+place of the basic star catalog.  Three catalog files are provided on the
+distribution disk:  the entire FK5 catalog, a catalog of compact extragalactic
+radio sources, and the Messier catalog of clusters and nebulae.  You can also
+set up your own catalog of objects.  This will be discussed more thoroughly in
+section 6.4 and Appendix A.
+
+
+4. Specifying What You Want
+
+During its execution, the Floppy Almanac requests you to enter two broad types
+of input data: names and numbers.  The Floppy Almanac treats these two types of
+input data quite differently and therefore requests them separately.  Names are
+simply character strings used to select celestial objects or menu choices.  
+Numbers are used to specify exactly what data you want the Floppy Almanac to
+produce on any given run.  Numbers are used to supply information on dates and
+intervals, geographic position (latitude and longitude), and the number of
+lines of output to be produced.  The meaning, format, and general requirements
+for all these types of input data are given below.
+
+
+4.1  Names
+
+In the context of the Floppy Almanac, a "name" is simply a string of one to
+eight alphanumeric characters.  The Floppy Almanac always requests names
+separately from numbers.  Lower case letters which you enter as part of a name
+are converted to upper case by the Floppy Almanac, any blanks are treated as
+meaningless spacers (ignored except for the fact that they take up one of the
+eight positions), and any characters beyond the eighth position are
+superfluous.  Therefore, "Alp Cen", "ALP CEN", and "a L pCENTAURI" are
+completely equivalent names, since the Floppy Almanac will (internally) reduce
+each to the basic form "ALPCEN ".  (Note:  When entering names, do not surround
+them with quotes.)
+
+Names are used to select celestial objects.  The following rule holds
+throughout:
+
+When entering names, you need type the fewest number of characters necessary to
+unambiguously specify your choice.
+
+
+   1988 US Naval Observatory Nautical Floppy Almanac Version 2.00.88  Page  6
+Thus, for example, when you are asked to enter an object name there is never
+any reason to type more than eight characters since only the first eight are
+used.  Therefore, "ALPCENTAURI" is equivalent to "ALPCEN".  Furthermore,
+according to the above rule, you need only enter the number of characters
+necessary to distinguish your choice from any of the other possibilities.  It
+may not be obvious how many characters are needed to unambiguously specify your
+choice. For example, "ma" is sufficient to distinguish Mars from Mercury or the
+Moon, but how about the star Markab?  Does "ve" result in Venus or Vega?  In
+these cases it is helpful to know that the Floppy Almanac has an ordered list
+of object names and will select the first object from the list that seems to
+correspond to the name you entered.  The ordered list is as follows:
+
+Sun,Moon,Mercury,Venus,Earth,Mars,Jupiter,Saturn,Uranus,Neptune,Pluto,Star
+names:    Proper names,  Bayer designations, and DM numbers.
+
+The stars in the 200-star catalog are arranged in the following order:(a)  the
+57 standard navigational stars, in order of  navigational star number; followed
+by(b)     the next 143 brightest FK5 stars, in order of     decreasing
+brightness (increasing magnitude).
+
+Thus, "s" and "m" are sufficient for the Sun and Moon, respectively, "ma" will
+indeed get you Mars, not Markab ("Mark" is sufficient for the latter), "ve"
+yields Venus, but "veg" is needed for Vega.
+
+There are two "wild-card" characters which you can use within names.  The first
+is "?" (question mark), which means "any single character is acceptable here". 
+Thus, for example, if you were unsure of whether the star name "Alkaid" was
+spelled with a "k" or a "c" in the middle, you could enter the name "Al?aid".  
+The second "wild-card" character is "_" (underscore), which means "one or more
+blanks must be present here".  This character is useful when blanks are
+significant parts of names (normally blanks are ignored).  Examples are,
+"Kaus_Aus", "+6_919", and "ALP_TAU", although in most cases omitting this
+character will not result in any ambiguity.  Also, it turns out that because of
+the order of the navigational stars, the names "den" or "deneb" will always
+result in the selection of the star Denebola; to obtain Deneb, you must enter
+"deneb_".
+
+Note that star names may be specified as proper name, Bayer designation, or DM
+number.  Each star in the 200-star catalog also has a serial number which can
+be used as a name if it is known; serial numbers 1 to 57 are the standard
+navigational star numbers.
+
+Proper names have been taken from the list in the back of the Nautical Almanac,
+supplemented by common names for some of the fainter stars taken from Appendix
+II of the Yale Bright Star Catalog (4th ed).  However, note that there is no
+universal agreement on the English spelling of many star names.
+
+Bayer designations should be entered in the form "GGG CCC" where "GGG"
+represents the first three letters of the English name of the Greek letter
+("ALP", "BET", "GAM", etc.) and "CCC" represents the standard 3-letter IAU
+constellation abbreviation ("ORI", "CAS", "UMA", etc.).  Thus "LAM SCO", "Alp
+Lyr", and "gam cru" are acceptable Bayer designations.  Since some of the stars
+are components of binary systems, it may be necessary to insert a component
+number into the middle of the name, for example, "ALP2 LIB"; if you are unsure
+about whether a component number is required, try "ALP?LIB" or the like.
+
+
+   1988 US Naval Observatory Nautical Floppy Almanac Version 2.00.88  Page  7
+DM numbers should not contain leading zeros in either the zone or the star
+number subfields.  When the star number subfield requires four or fewer digits,
+a "_" character is recommended to separate the two subfields.  The zone section
+must always begin with a "+" or "-".  Thus "+3_419" is an acceptable DM number,
+but not the apparently equivalent "03 0419".
+Thus, any of the names "RIGEL", "11", "rig", "bet or", or "-8_1063" could be
+used to specify the star Rigel.
+
+
+4.2  Numbers
+
+All numeric data that the Floppy Almanac requires to begin a calculation is
+entered from the menu selection "F1 Initial Values".  Numeric data are entered
+as FORTRAN "list-directed input" which is very free-form.  Floating point
+numbers may be truncated at any point to the right of the decimal point, i.e.
+the number is assumed to be extended on the right with zeros.  The decimal
+point itself may be omitted if the fraction is zero.  A disadvantage of this
+form of input is its insistence on only allowing number to be entered.  If a
+letter or special character is entered when a number is expected, the error
+message "Invalid character in input!  Try again." will appear.  Also, once a
+numeric input has been chosen, a number must be entered.  If the enter key is
+pressed without having first entered a number, the prompt is redisplayed.
+Specific information on the three general types of numeric data follows.
+
+4.2.1  Dates and Intervals
+
+The date which you enter in response to a prompt from the Floppy Almanac is
+used to specify the epoch for the tabulation.  For fixedÄinterval tabulations
+this date is used as the beginning date of a running table; you must also
+select the tabulation interval and the number of lines of output you wish.  The
+tabulation interval is the difference in tabular epochs between successive
+output lines.
+
+As in the Astronomical Almanac, the independent argument for most Floppy
+Almanac tabulations is dynamical time, specifically, Terrestrial Dynamical Time
+(TDT).  TDT is effectively equal to TAI (International Atomic Time) + 32.184
+seconds, and is the extension of the old Ephemeris Time scale, abandoned in
+1984.  The more familiar Universal Time (UT), which is tied to the (irregular)
+rotation of the Earth, is currently "slow" with respect to TDT and the TDT - UT
+difference is now almost one minute.  A complete table of past and projected
+values of TDT-UT, accurate to a fraction of a second, can be found on page K9
+of the Astronomical Almanac.
+
+Therefore, in using the Floppy Almanac, dates and intervals to be entered
+should be expressed in Terrestrial Dynamical Time (TDT), except for the
+following cases.  "F7 Navigation" and "F5 Sidereal Time" require Universal Time
+(UT, or, more precisely, UT1), otherwise known as Greenwich Mean Time (GMT). 
+Within the "F3 Positions" selection, the time scale for heliocentric and
+barycentric coordinates is, technically, Barycentric Dynamical Time (TDB),
+although TDB never differs from TDT by more than 1.7 milliseconds.
+
+Dates may be entered in either of two forms:  
+year-month-day-hour-minute-second, or Julian date and fraction.  The former is
+
+
+   1988 US Naval Observatory Nautical Floppy Almanac Version 2.00.88  Page  8
+entered using the format YYMMDD.HHMMSS, for example, 880314.052741 for 1988
+March 14, 5:27:41 TDT.  Alternatively, a Julian date, including an appropriate
+fraction, may be entered, for example, 2447234.72756 which corresponds to the
+above date.  The Floppy Almanac can distinguish between the two forms since
+they require, respectively, six and seven digits to the left of the decimal
+point.
+
+Intervals may also be entered in either of two formats:  
+days-hours-minutes-seconds, or days and fraction.  The format of the interval
+must correspond to the format of the date.  If the date is entered as
+year-month-day-hour-minute-second, the interval must be entered as
+days-hours-minutes-seconds, using the format DD.HHMMSS.  Similarly, if the date
+is entered as Julian date and fraction, the interval must be entered in the
+form days and fraction.  For example, if a tabulation interval of 8.5 minutes
+is desired, it must be entered as 0.000830 if the date is entered as
+880314.052741 and as 0.005903 if the date is entered as 2447234.72756.
+
+
+4.2.2  Geographic Position - Latitude and Longitude
+
+Latitude and longitude are always entered as degrees plus fraction.  North
+latitudes are positive, south latitudes negative.  In accordance with a recent
+IAU resolution, east longitudes are considered positive, west longitudes
+negative.  For most purposes not more than two or three digits to the right of
+
+the decimal point are required for latitude and longitude entries, since 0.01
+degree of latitude (or longitude at the equator) corresponds to just over 1 km. 
+
+
+
+Therefore the latitude and longitude of (downtown) Chicago could be expressed
+as -87.63, 41.85; that of Sydney, Australia, 151.22, -33.88.
+
+
+4.2.3 Number of Lines
+
+The data item "F5 Number of Lines" is used to specify how many lines of output
+you wish for the fixed interval tabulations.  The first line will show data for
+the starting date which you entered, and each succeeding line will show the
+data for one tabulation interval further in the future.
+
+
+4.2.4 Time Zone
+
+The menu selection "F6 Rise & Set Times" is the only section of the Floppy
+Almanac which uses information about time zones.  Time zones are entered from
+the "F1 Initial Values" menu selection.  The time zone value is the number of
+hours before or after UT that is in effect for the longitude of the tabulation. 
+
+
+Note however, that it is not necessary to enter the time zone value for the
+longitude for which the phenomena is being calculated.  A value of 0 will
+result in a tabulation in UT, while a value of -4 for longitude -77.00 will
+produce a table in Eastern Daylight Time.
+
+
+   1988 US Naval Observatory Nautical Floppy Almanac Version 2.00.88  Page  9
+4.3 Default Values of Input Data
+
+The Floppy Almanac will search 3 sources of initial values when starting a
+calculation.  The first source is the values entered by the user from the "F1
+Initial Values" menu selection.  These values may only be changed from the menu
+selection.  The second source is the external disk file of values called
+FA.DFT.  This is simply a file of ASCII text which is read by the Floppy
+Almanac once at start-up time.  If this file is not found in the current
+directory or is not readable for some reason, then the third source of initial
+values will be used, which are values stored internal in the Floppy Almanac and
+are not modifiable.  The FA.DFT file can be customized for individual uses and
+can be edited by any ASCII text editor, and has the simple format that the
+numbers must be in columns 21 thru 40.  The order of the lines is critical and
+must not be changed, i.e. the first line must be the starting date, the second
+line must be the latitude, etc.  Copying the supplied FA.DFT and renaming the
+original will provide a pattern to use when setting up your own default values. 
+
+
+
+The Floppy Almanac program only reads this file; it will not alter the contents
+of the FA.DFT file.  Below is the contents of a typical FA.DFT file.
+Starting date =     880601.00000Latitude     =    39.000Longitude = -77.000  
+Time step = 1.00  Num. of positions =5   Time zone =-4
+
+
+4.4 Choices at End of Tabulation
+
+After the Floppy Almanac has computed and tabulated the data you requested, it
+displays the statement:
+
+Pause - Please enter a blank line (to continue) or a DOS command.
+At this point, any DOS command may be executed, or the word "command" may be
+typed to load a DOS shell.  While running the shell, keep in mind that
+available RAM has been decreased by the amount occupied by DOS and the Floppy
+Almanac (about 280k with DOS 3.2).  The command "exit" is used to leave the DOS
+shell and return to the Floppy Almanac.  The cursor is turned off by the Floppy
+Almanac and will not be visible in the DOS shell unless the DOS "mode" command
+is used to reset the video mode.  See the DOS manual for instructions on this
+command.  If the cursor is turned on in the shell, it will remain visible after
+returning to the Floppy Almanac.  The key sequence "Alt-F1" will redraw the
+header and menu and turn the cursor off.
+
+
+5. File Output
+
+The Floppy Almanac receives input from the keyboard and displays its output on
+the monitor screen.  However, a new feature has been added with release
+2.00.88.  Menu option "F2 File Output" will capture all of the titles, column
+headers and numbers from a calculation to a disk file.  When "F2 File Output"
+is selected, there are 3 situations which can occur:
+
+#1 The named file does not exist.#2 The named file exists but is not opened for
+writing.#3 The named file exists and is currently open.
+
+
+   1988 US Naval Observatory Nautical Floppy Almanac Version 2.00.88  Page  10
+The Floppy Almanac tests for these conditions and has a slightly different
+response to each of them.  If the file does not exist, it is created and opened
+for output.  If the file already exists, but is not open, it is opened and the
+new data will be appended to the bottom of the file.  Finally, if an output
+file exists and is open, it will be closed.  It can be re-opened later by
+selecting "F2 File Output" and specifying the same file name.
+
+
+6. Details of Floppy Almanac Computations and Output
+
+As noted above, when the Floppy Almanac program is started, the main menu
+appears.  It is always possible to return to the main menu after any tabulation
+is finished by pressing the "Enter" key.  The main menu is used to select the
+type of tabulation desired or otherwise control Floppy Almanac execution.  As
+shown in the example in section 2, this menu presents 10 options.
+
+A brief explanation of each of the options follows.  Except where specifically
+noted, the data values produced by the Floppy Almanac will be consistent with
+those printed in the Astronomical, Nautical, or Air Almanacs, with occasional
+end-figure discrepancies of one unit.
+
+
+6.1 Positions
+
+
+If you select this option, a secondary menu immediately appears:
+
+ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+º    U.S. Naval Observatory        º
+º    Nautical Almanac Office       º
+ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º Floppy Almanac for the year 1988 º
+ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+Version 2.00.88
+ÉÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+º F1 ³ Apparent geocentric coordinates     º
+ÇÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º F2 ³ Astrometric geocentric coordinates  º
+ÇÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º F3 ³ Heliocentric coordinates            º
+ÇÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º F4 ³ Barycentric rectangular coordinates º
+ÇÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+º F5 ³ Leave Position calculation          º
+ÈÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+Each of the options produces a tabulation of the positions of a specific object
+with respect to one of four standard astronomical coordinate systems, as
+described below.
+
+"F1 Apparent geocentric coordinates" and "F2 Astrometric geocentric
+coordinates" both produce tabulations of right ascension and declination, and,
+for solar system objects, true distance.  Apparent coordinates are with respect
+
+
+   1988 US Naval Observatory Nautical Floppy Almanac Version 2.00.88  Page  11
+to the true equator and equinox of date; astrometric coordinates are with
+respect to the mean equator and equinox of J2000.0.
+
+"F3 Heliocentric coordinates" are tabulated as ecliptic longitude and latitude
+and radius vector, with respect to the mean ecliptic and equinox of date. This
+tabulation is provided only for solar system objects.
+
+"F4 Barycentric rectangular coordinates" are tabulated as equatorial X, Y, and
+Z, measured from the solar system barycenter.  The XY-plane is the mean equator
+of J2000.0, the Z-axis points toward the mean north celestial pole of J2000.0,
+and the X-axis points toward the mean equinox of J2000.0.  This tabulation is
+provided only for solar system objects.
+
+
+6.2 Physical Ephemeris of Planet
+
+The physical ephemeris of a planet refers to its aspect as seen from the Earth:
+its apparent magnitude, the angular size of its disk, its apparent degree of
+illumination, the orientation of its pole, and the positions of its sub-solar
+and sub-Earth points.  In the Astronomical Almanac, the physical ephemeris of a
+planet is spread across two facing pages.  This divides into what could be
+called "illumination data" on the left-hand pages and "rotation data" on the
+right-hand pages.  The Floppy Almanac asks which set of data you wish to see. 
+The data tabulated by the Floppy Almanac for the planets are the same as those
+in the Astronomical Almanac.
+
+The physical ephemeris of the Sun is not available from the Floppy Almanac. The
+physical ephemeris of the Moon is available but is substantially different from
+that in the Astronomical Almanac, both in format and accuracy.  The model of
+the rotation of the Moon used by the Floppy Almanac is based on a simplified
+lunar libration theory and therefore the rotation data are not as accurate as
+that in the Astronomical Almanac.
+
+
+6.3 Sidereal Times
+
+This selection provides computed Greenwich mean and apparent sidereal times,
+and local apparent sidereal time for any longitude.  This computation does not
+depend on the Floppy Almanac's solar system ephemeris; therefore, it will work
+for dates in any year.
+
+6.4 Change Catalog
+
+This menu selection is used to replace the standard 200-star catalog with
+another catalog of objects.  The new catalog must exist as a
+specially-formatted disk file external to the Floppy Almanac module.  A group
+of such catalogs is provided on the Floppy Almanac disk:
+
+Catalog    File      Contents                                 Number of
+number     name                                               objects
+1       Standard     200-star catalog                          200
+2       STAR1.CAT    FK5 star data transformed to J2000.0     1536
+3       RADIO1.CAT   Compact extragalactic radio sources       233
+4       MESSIER.CAT  Messier catalog of clusters and nebulae   109
+
+
+   1988 US Naval Observatory Nautical Floppy Almanac Version 2.00.88  Page  12
+You will be prompted to "Enter catalog number or file name of catalog".  You
+may enter one of the catalog numbers given above or the corresponding file
+name.  The new catalog will be used for the duration of the Floppy Almanac run
+(the standard 200-star catalog is always in place at the beginning of a run) or
+until you again select "F9 Change Catalog".  If at any point you wish to
+restore the standard 200-star catalog, simply select "F9 Change Catalog" and
+respond to the prompt with a "1".  (The standard 200-star catalog does not have
+a file name, since it is actually just the first 200 stars of catalog 2.)
+
+You can create your own catalogs of special objects.  A program to set up your
+catalog in the required format is supplied on the Floppy Almanac disk as file
+CATALOG.EXE.  See Appendix A for further information.
+
+The Floppy Almanac can internally store the data for 200 objects at a time.  As
+part of the "F9 Change Catalog" routine, data on the first 200 objects in the
+new catalog will be read into memory.  If you have selected a catalog with more
+than 200 objects in it, the Floppy Almanac will execute disk reads whenever it
+needs to access data for an object not currently in memory.
+
+Once a new catalog has been defined, most Floppy Almanac tabulations (those
+normally applicable to stars) can be requested for any of the new set of
+objects.  Each object in each catalog has up to three names (aliases) by which
+it can be referred:
+
+Catalog FileName   How specified  Examples  number     name priority
+
+1 & 2   STAR1.CAT  Name 1 Proper name ARCTURUS, MIZAR  Name 2 Bayer
+designation    BET ORI, ALP2 CVN        Name 3    DM number +23 541, - 6 1241
+3       RADIO1.CAT  Name 1    IAU designation     0851+202, 1641+399       
+Name 2    3C or 4C number     3C 454, 4C-02.81         Name 3    Other
+designation     OJ287, NRAO 150
+4       MESSIER.CAT Name 1    Messier number M3, M57, M 31       Name 2    NGC
+number    NGC 6205, NGC221         Name 3     Common name   RING, ANDROMED
+
+The rules for referring to objects by name are given in section 4.1.  An
+object's serial number within its catalog is also a "name" by which it can be
+referred.
+
+Redefinition of the catalog to be used by the Floppy Almanac does not affect in
+any way the availability or accuracy of data for solar system objects.
+Before the "F9 Change Catalog" routine exits, you will be asked whether you
+wish to see a display of data for all the objects in the new catalog.  This
+display lists the serial number, all three names, and the J2000.0 right
+ascension and declination of each object.  The CATALOG.EXE utility program can
+also produce a complete list of the contents of each catalog file, which may be
+output as a disk file.
+
+A few notes on each catalog:  Catalog 2 is the FK5, with the addition of one
+star (Eta Ophiuchi) which is a standard navigational star not in the FK5.  The
+FK5 contains stars as faint as visual magnitude 8, but is not complete except
+for the very brightest stars.  The data in the other catalogs have been
+transformed to equator, equinox, and epoch J2000.0 by Dr. Clayton Smith of the
+Naval Observatory; the equinox is that of the FK5.  Catalog 3 is the list of
+
+
+   1988 US Naval Observatory Nautical Floppy Almanac Version 2.00.88  Page  13
+233 compact extragalactic radio sources compiled by a working group of IAU
+Commission 24, and is the same as the list of radio sources published in the
+1988 Astronomical Almanac.  Catalog 4 is the standard Messier catalog; the
+serial numbers are the same as the "M" numbers.  M40, a "missing" Messier
+object, has null data in its record.
+
+
+6.5 Rise, Set, and Transit Times
+
+This selection produces, for any object, a tabulation of ephemeris transit
+times, and local times of rise, set, and transit for any location.
+Additionally, the local azimuth at rise and set (measured eastward from true
+north) and the local altitude at transit is displayed.  The times of rise and
+set correspond to the times when the upper limb of the object appears to be
+coincident with the true (unobstructed) horizon, with atmospheric refraction at
+optical wavelengths and standard atmospheric conditions at sea level taken into
+account.  Similarly, the computed altitude at transit includes the effects of
+standard refraction.
+
+The time zone used by the Floppy Almanac for the local rise, set and transit
+times is the one specified in the "F1 Initial Values" menu choice.  Any time
+zone may be specified for any longitude.  This makes a calculation possible for
+UT, for example, or more convenient for Daylight Saving Time.  The time zone
+used by the Floppy Almanac is displayed at the top of the tabulation:  for
+example, "UT -6" is North American Central Standard Time, and "UT +1" is
+central European time.
+
+The following symbols may appear within the tabulation:
+     ** **     means object is continually above horizon    -- --     means
+object is continually below horizon     p    means event occurs on preceding
+date, local time    f    means event occurs on following date, local time  s
+means altitude is measured from southern horizon  n    means altitude is
+measured from northern horizon
+
+The rise and set times displayed by the Floppy Almanac for the Sun and Moon may
+differ at high latitudes from those printed in the Astronomical or Nautical
+Almanac by several minutes, especially near the times when the Sun or Moon is
+continually above the horizon.  The rise and set times displayed by the Floppy
+Almanac for latitudes very close to the poles are not, in general, reliable.
+
+
+6.6 Navigation
+
+This selection tabulates all the astronomical information necessary to obtain a
+line of position from an altitude observation made at sea level.  The Floppy
+Almanac will prompt you to enter the name of the object observed, the exact
+time of the sight (in UT1 or GMT), and the assumed position (latitude and
+longitude) from which the sight was made.  Once these are entered, the Floppy
+Almanac will display both almanac data and altitude corrections for the object
+specified.  The almanac data consist of:  Greenwich hour angle (GHA),
+declination (Dec), computed altitude (Hc), and computed azimuth (Zn).  The
+altitude corrections consist of atmospheric refraction (Refr) for sea level and
+standard conditions, semidiameter (SD), parallax in altitude (PA), and the sum
+
+
+   1988 US Naval Observatory Nautical Floppy Almanac Version 2.00.88  Page  14
+Refr + SD + PA.  If the Sun is a factor at the time of the observation (daytime
+or during nautical twilight), a similar line of data will also be displayed for
+it.  Additionally, the GHA of Aries is always displayed.
+
+If, in place of the name of a specific object, you enter "all" (or "ALL"), a
+line of data will be displayed for each navigational planet and star which is
+above the horizon as viewed from the assumed position at the time specified.
+The altitude corrections are intended for use during sight reduction.  To
+obtain the observed altitude (Ho), the sum of the altitude corrections (in the
+rightmost column) may be added to the apparent altitude (ha), which itself is
+obtained from the sextant altitude (hs) by removing instrumental and dip
+corrections.  The altitude corrections strictly apply only in the case where
+the observation was in fact made from the assumed position and, for solar
+system objects, the lower limb of the specified object was observed. Generally,
+however, these corrections are weak functions of altitude and can therefore be
+applied, with some small error, to sights made close to the assumed position.  
+The first of the listed corrections, refraction, applies to sea level
+observations made under standard atmospheric conditions.  The semidiameter
+correction for the Moon includes augmentation.
+
+The tabulated quantities can also be used for observation planning, where a
+prediction of the apparent altitude (ha) may be formed by subtracting the sum
+of the altitude corrections from the computed altitude:  ha (predicted) = Hc -
+Sum.  In many cases, Sum is itself negative, leading to ha (predicted) being
+greater than Hc.
+
+The tabulated almanac data are consistent with those printed in the Air or
+
+Nautical Almanacs, to within the accuracy of the latter, 0.1-0.2 minutes of
+arc.  The only significant difference (which may reach 0.5 minutes of arc) may
+arise in the case of Venus, where, in the Floppy Almanac, no adjustment has
+been made for its phase.  (If the disk of a planet can be resolved, then an
+observation of its lower limb can be reduced in the same way as that for the
+Sun or Moon; a phase correction is then irrelevant.) The Floppy Almanac's
+altitude corrections are consistent, within 0.2 minutes of arc, with those
+tabulated on the front inside cover of the Nautical Almanac.
+
+
+6.7 Daily Configuration
+
+This selection provides a concise summary of the most frequently used
+information on the observability of all the major solar system bodies (Sun and
+Moon and planets except Pluto), including right ascension and declination,
+elongation from Sun, magnitude, apparent angular size of disk, etc.  The
+information is arranged in order of elongation from Sun.  The only input
+required is the date.
+
+
+6.8  Topocentric Altitude and Azimuth
+
+The altitude and azimuth of a celestial body as observed from any geographic
+location at any time can be obtained by using the "F7 Navigation" selection. 
+The celestial objects which can be specified are not limited to those normally
+
+
+   1988 US Naval Observatory Nautical Floppy Almanac Version 2.00.88  Page  15
+used for celestial navigation.  In fact, if you redefine the catalog in use
+(see section 6.4), it is possible to obtain "F7 Navigation" on objects such as
+the Ring Nebula or the quasar 3C 273.
+For those not familiar with navigational notation, the following definitions
+are provided:
+
+GHA  Greenwich hour angle.  Apparent instantaneous hour angle of object
+measured westward from the plane of the Greenwich meridian.
+
+Dec  Declination.  Apparent declination of object.
+
+Hc   Computed altitude.  Instantaneous altitude of center of object, calculated
+using its geocentric position, that is, without adjustments for topocentric
+parallax or refraction.
+
+Zn   Computed azimuth.  Instantaneous azimuth of object, measured eastward from
+true north.
+
+Refr Refraction. Atmospheric refraction correction applicable to object, if
+observed at sea level at optical wavelengths, under standard atmospheric
+conditions.
+
+SD   Semidiameter.  Half the apparent equatorial angular diameter of object.
+
+PA   Parallax in altitude.  Topocentric parallax correction applicable to
+object.
+
+Sum  Sum = Refr + SD + PA.  If Sum is subtracted from Hc, the apparent altitude
+(that comparable to observation) of the lower limb of the object is obtained.
+
+7. Future Developments
+
+This is the second major version of the Floppy Almanac to be released.  Many of
+the changes that have been incorporated into its operation are the direct
+result of letters received from satisfied (or irate) customers.  The most
+popular request by far was to have some way of installing your local
+coordinates as the default values.  The change made to implement this was the
+FA.DFT file.  Other minor changes have been made, but at this point, they are
+all in the appearance of the program and not in its operation.  The next
+improvement will be the addition of civil, nautical, and astronomical twilight
+times to the Rise & Set Times menu choice.  Improvements and extensions will be
+made to the software, bugs will be fixed, inconvenient features changed, and
+versions for computers of architectures other than that of the IBM PC may be
+produced.  Versions of the Floppy Almanac which span more than one year are
+still under study.  As the computing speed, memory, and disk capacity of
+microcomputers increases, the Floppy Almanac will be changed to take advantage
+of the increased computing power available.
+
+Comments, criticisms, and suggestions are solicited.  Please mail your remarks
+to:
+
+Nautical Almanac Office Code FA U. S. Naval Observatory Washington, DC
+20392-5100
+
+
+   1988 US Naval Observatory Nautical Floppy Almanac Version 2.00.88  Page  16
+Appendix A
+
+Creating Star or Special-Object Catalogs
+
+In order for catalog positions of stars or other special objects (e.g.,
+pulsars, globular clusters, X-ray sources, etc.) to be used by the Floppy
+Almanac, they must be in a specially-coded binary form.  Once in this form, the
+catalog can be substituted for the standard 200-star catalog by using the "F9
+Change Catalog" option, in which you specify the new catalog by entering its
+MS-DOS file name.
+
+A program is provided on the disk as file CATALOG.EXE which can be used to
+transform a catalog of yours to the special binary form required by the Floppy
+Almanac.  You can set up your catalog using an editor, another program, etc.
+Your catalog must be formatted, that is, composed of character data, with one
+record of 96 characters for each object in the catalog.  The order of the
+records is not important, but each record in your catalog must be set up as
+follows:
+
+Field     Field     Contents  Units               Example  posn. format
+1- 8      A8        Name1     Left justified      ALP2 LIB 9-16  A8
+Name2, left justified    ---  ZUBENELG17-24  A8   Name3, left justified    ---
+     -15 399625-38   F14.10    J2000.0 right ascension hours     
+14.847975694639-52   F14.10    J2000.0 declination     degrees   
+-16.041802501053-62 F10.4      J2000.0 proper motion in RA  s / cy    
+-0.735063-72   F10.4     J2000.0 proper motion in dec  " / cy
+-6.831073-80    F8.4     Parallax  "    0.049081-88    F8.4  Radial Velocity km
+/ s   -10.000089-96 F8.4 Visual Magnitude (or flux)     mag, Jy   2.9000
+
+The example column shows data for the star Zubenelgenubi, Alpha2 Librae.  Names
+are truncated on the right, if necessary.  Any of the name fields may be left
+blank.  The time unit for proper motion is the Julian century.  For stars, the
+parallax and radial velocity fields can be set to zero if these quantities are
+unknown.  For extragalactic objects, or those without precise positions, the
+proper motion, parallax, and radial velocity fields can be set to zero.  The
+visual magnitude (flux) field is not currently used by the Floppy Almanac.
+A small sample catalog file formatted as above is included on the disk as file
+SAMPLE.TXT .  It contains data on five stars.
+
+To use the program to convert your catalog to the binary form suitable for use
+by the Floppy Almanac, simply type CATALOG .  You will be prompted to enter the
+file name of the catalog you are supplying as input (constructed as specified
+above), the number of stars (objects) in the input file, and a character string
+describing the contents of the catalog to be used as a title. The program will
+then execute and produce an output file with the file name BINARY.CAT which can
+be used by the Floppy Almanac.  You may, of course, later rename this file.
+
+The Floppy Almanac can always be obtained by downloading the latest version 
+from the NOVAC computer bulletin board system.  It is run by the Northern 
+Virginia Astronomy Club and the call is always free except for pertinent long 
+distance charges.  The number is 703-256-4777 and is currently running at 1200 
+baud, no parity, eight data bits and one stop bit.
+
+
+   1988 US Naval Observatory Nautical Floppy Almanac Version 2.00.88  Page  17
+Appendix B
+
+              Glossary (Reprinted from 1987 Astronomical Almanac)
+
+                U.S. Naval Observatory Nautical Almanac Office
+                          Floppy Almanac User's Guide
+
+                                    Table C
+
+1.        Introduction
+2.        Getting Started -- Sample Run
+3.        Supported Celestial Objects
+4.        Specifying What You Want
+4.1       Names
+4.2       Numbers
+4.2.1     Dates and Intervals
+4.2.2     Geographic Position - Latitude and Longitude
+4.2.3     Number of Lines
+4.2.4     Time Zone
+4.3       Default Values of Input Data
+4.4       Choices at End of Tabulation
+
+5.        File Output
+6.        Details of Floppy Almanac Computations and Output
+6.1       Positions
+6.2       Physical Ephemeris of Planet
+6.3       Sidereal Times
+6.4       Change Catalog
+6.5       Rise, Set, and Transit Times
+6.6       Navigation
+6.7       Daily Configuration
+6.8       Topocentric Altitude and Azimuth
+7.        Future Developments
+
+Appendix A
+Appendix B

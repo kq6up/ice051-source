@@ -1,0 +1,6 @@
+* text=auto
+/dos/** -text
+/data/** -text
+/reference/** -text
+/snapshots/** -text
+/tools/** -text

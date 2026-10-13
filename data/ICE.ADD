@@ -1,0 +1,205 @@
+
+
+
+
+
+                       Interactive Computer Ephemeris
+
+                          Nautical Almanac Office
+                           U.S. Naval Observatory
+
+
+                                  Addendum
+                                     to
+                        Floppy Almanac User's Guide
+
+   This addendum to the Floppy Almanac User's Guide describes the changes 
+   that  have been made to the Floppy Almanac to produce  its  successor, 
+   the Interactive Computer Ephemeris. In this addendum, the abbreviation 
+   FA stands for the Floppy Almanac, and the abbreviation ICE stands  for 
+   Interactive Computer Ephemeris.
+
+   The  most significant difference between the two programs is the  time 
+   span  of the data. The ICE can compute ephemerides for a time span  of 
+   approximately 250 years while the time span of the FA is limited to  1 
+   year.  This  enormous increase is made possible because the  ICE  uses 
+   data  compressed  by such a large factor that only four  360  kilobyte 
+   disks  are  required to contain the program and all of the  data  that 
+   would have required 250 disks using the FA format. A trade off is made 
+   in  the  program speed however; the ICE program runs  slightly  slower 
+   than the FA.
+
+   Another change is the name; the program is now called the  Interactive 
+   Computer Ephemeris, and the name of the executable file on the disk is 
+   ICE.EXE. The overall appearance and operation of the ICE is  unchanged 
+   from that of the FA. Changes in the internal structure of the  program 
+   have  increased the amount of memory required. Now, a minimum  of  384 
+   kilobytes  of RAM are required in a machine running MS-DOS 2.11.  More 
+   memory  may be required if you use memory resident programs or have  a 
+   later version of DOS.
+
+   A hard disk capable of holding all the Interactive Computer  Ephemeris 
+   files in a single directory is recommended, but is NOT required, since 
+   the ICE will prompt the user for disk changes. The arrangement of  the 
+   files on the 360k disks is listed below. Each pair of disks #1 and #2, 
+   and  disks  #3  and  #4 are combined onto  a  single  720k  disk  when 
+   distributed on that media.
+
+   Disk #1:  ICE       EXE       Disk #2:  EPH20     DAT
+             PARAM     DAT                 EPH21     DAT
+             EPH18     DAT                 EPH22     DAT
+             EPH19     DAT                 EPH23     DAT
+             READ      ME                  EPH24     DAT
+                                           CATALOG   EXE
+                                           STAR1     CAT
+                                           RADIO1    CAT
+                                           MESSIER   CAT
+                                           SAMPLE    TXT
+
+
+
+
+   Disk #3:  EPH01     DAT       Disk #4:  EPH11     DAT
+             EPH02     DAT                 EPH12     DAT
+             EPH03     DAT                 EPH13     DAT
+             EPH04     DAT                 EPH14     DAT
+             EPH05     DAT                 EPH15     DAT
+             EPH06     DAT                 EPH16     DAT
+             EPH07     DAT                 EPH17     DAT
+             EPH08     DAT
+             EPH09     DAT
+             EPH10     DAT
+
+   If sufficient space is available on a hard disk or in a RAM disk,  all 
+   of  the  files may be copied there and the ICE will be  able  to  find 
+   whichever files it needs.
+
+   The  Compressed Ephemeris, recently developed at the Nautical  Almanac 
+   Office,  enables ephemeris data to be stored in only a small  fraction 
+   of  the  space required to store the actual planetary  coordinates.  A 
+   brief  description  of  the  internal  operations  of  the  Compressed 
+   Ephemeris follows. The stored data are considerably different from the 
+   Chebychev  polynomial coefficients of the FA, and a greater amount  of 
+   calculation  is  required to extract the  planetary  coordinates.  The 
+   stored  data  are  parameters describing a  reference  orbit  and  the 
+   Chebychev  polynomials  which represent the  differences  between  the 
+   actual  coordinates and the coordinates obtained from the  parameters. 
+   The  net  result, however, is the  rectangular  planetary  coordinates 
+   required  by  the  ICE program; the details  of  the  calculation  are 
+   invisible  to  the  user. The data for the  Compressed  Ephemeris  are 
+   stored on disk as 24 separate files, each small enough so that only  a 
+   moderate  amount  of  memory is required to hold one  file.  When  the 
+   boundary date of a given file is crossed, the ICE program will attempt 
+   to  read in the next necessary file. This disk reading requires a  few 
+   seconds  and  slows the program down. Once the file has been  read  in 
+   calculations will resume.
+
+   If  the expected file is not found in the current directory, an  error 
+   message is displayed on the screen, along with a request for the  user 
+   to insert the correct disk. The message will appear as:
+
+        Ephemeris file EPH01.DAT not found on active disk.
+        Insert correct disk and press "Enter" when ready.
+
+   When  this error message is displayed, the user may swap disks, or  by 
+   typing the word "COMMAND" may enter a DOS shell and do any  operations 
+   needed (such as copying files from one disk to another). To leave  the 
+   DOS  shell,  type the word "EXIT" at the DOS prompt and the  ICE  will 
+   reappear  on  the screen. If the needed file is still not  found,  the 
+   error  message will be repeated. The ICE program may be terminated  at 
+   this  point  by pressing and holding the "Ctrl" key and  pressing  the 
+   "Break" key.
+
+   Each  of  the  24 Compressed Ephemeris data files  covers  4000  days, 
+   except  the first, EPH01.DAT, and the last, EPH24.DAT, which  cover  a 
+   shorter  span. The calendar and Julian dates covered by each file  are 
+   listed in the following table.
+
+
+
+                          ICE Ephemeris Data Files
+
+
+               ---------Beginning---------   ----------Ending----------
+   File Name   Calendar Date   Julian Date   Calendar Date  Julian Date
+   --------------------------------------------------------------------
+   EPH01.DAT      1800 12 20     2378850.0      1804 02 15    2380000.0
+   EPH02.DAT      1804 02 13     2380000.0      1815 01 26    2384000.0
+   EPH03.DAT      1815 01 26     2384000.0      1826 01 08    2388000.0
+   EPH04.DAT      1826 01 08     2388000.0      1836 12 21    2392000.0
+   EPH05.DAT      1836 12 21     2392000.0      1847 12 04    2396000.0
+   EPH06.DAT      1847 12 04     2396000.0      1858 11 16    2400000.0
+   EPH07.DAT      1858 11 16     2400000.0      1869 10 29    2404000.0
+   EPH08.DAT      1869 10 29     2404000.0      1880 10 11    2408000.0
+   EPH09.DAT      1880 10 11     2408000.0      1891 09 24    2412000.0
+   EPH10.DAT      1891 09 24     2412000.0      1902 09 07    2416000.0
+   EPH11.DAT      1902 09 07     2416000.0      1913 08 20    2420000.0
+   EPH12.DAT      1913 08 20     2420000.0      1924 08 02    2424000.0
+   EPH13.DAT      1924 08 02     2424000.0      1935 07 16    2428000.0
+   EPH14.DAT      1935 07 16     2428000.0      1946 06 28    2432000.0
+   EPH15.DAT      1946 06 28     2432000.0      1957 06 10    2436000.0
+   EPH16.DAT      1957 06 10     2436000.0      1968 05 23    2440000.0
+   EPH17.DAT      1968 05 23     2440000.0      1979 05 06    2444000.0
+   EPH18.DAT      1979 05 06     2444000.0      1990 04 18    2448000.0
+   EPH19.DAT      1990 04 18     2448000.0      2001 03 31    2452000.0
+   EPH20.DAT      2001 03 31     2452000.0      2012 03 13    2456000.0
+   EPH21.DAT      2012 03 13     2456000.0      2023 02 24    2460000.0
+   EPH22.DAT      2023 02 24     2460000.0      2034 02 06    2464000.0
+   EPH23.DAT      2034 02 06     2464000.0      2045 01 19    2468000.0
+   EPH24.DAT      2045 01 19     2468000.0      2049 06 07    2469600.0
+
+        NOTE: The Julian date changes at noon in the civil calendar, 
+        i.e.  at  12  noon,  October 1,  1988  the  Julian  date  is 
+        2447436.0. The Julian dates given in the table correspond to 
+        noon on the calendar dates.]
+
+
+   This  table  is  provided so that the user will be able  to  copy  the 
+   necessary  files  for  the time span of interest to  a  working  disk. 
+   EPH10.DAT and EPH19.DAT, covering the present era, are located on  the 
+   same  distribution  disk  as the main ICE  program.  When  creating  a 
+   working disk, only four files are required. These files are:
+
+        ICE.EXE
+        ICE.DFT
+        PARAM.DAT
+        EPHxx.DAT   (any 1 of the 24 ephemeris files)
+
+   The file ICE.DFT may be omitted, but the standard default location and 
+   time  zone  will  be used, unless changed from the main  menu  in  the 
+   program.
+
+
+
+
+                               IMPORTANT NOTE
+                               --------------
+
+   This  is  a  Beta version of the ICE. That means that it  is  not  yet 
+   complete,  but  is ready for extensive testing by a  large  number  of 
+   users.  It  also means that the program will be changing in  the  near 
+   future. Most of the changes will be cosmetic to fix details that  have 
+   been  reported  to  us  by user of the FA.  There  will  be  some  new 
+   astronomical  calculations added. Specifically, we intend to  add  the 
+   physical ephemeris of the Sun, heliocentric rectangular coordinates of 
+   the  planets, topocentric apparent and astrometric positions, and  the 
+   ability to compute positions of minor planets and comets from a  table 
+   of orbital elements.
+
+   Furthermore,  it  is the intention of the Nautical Almanac  Office  to 
+   replace  all of the Beta versions with copies of the finished  product 
+   at  no charge to the original purchaser. You will be notified by  mail 
+   when the final version is available.
+
+
+                                   ERRATA
+                                   ------
+
+   The  original  issue of this Addendum, as received from  the  Nautical 
+   Almanac Office, contained an incorrect conversion from Julian date  to 
+   calendar  date  in the table. The calendar date  for  JD2412000.0  was 
+   given  as 1889 07 16 and should be 1891 09 24. The two occurrences  of 
+   the error have been corrected in this version.
+
+   1989-08-05  Dave Ransom
+

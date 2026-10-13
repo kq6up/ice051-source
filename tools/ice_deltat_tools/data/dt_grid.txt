@@ -1,0 +1,127 @@
+# last IERS observed MJD 61314 (~2026.74) dT=69.207s; BullA slope +0.139 s/yr; accel 0.0031 s/yr^2
+1800   14.000 AA/SwissEph
+1802   13.700 AA/SwissEph
+1804   13.100 AA/SwissEph
+1806   12.700 AA/SwissEph
+1808   12.500 AA/SwissEph
+1810   12.500 AA/SwissEph
+1812   12.500 AA/SwissEph
+1814   12.500 AA/SwissEph
+1816   12.500 AA/SwissEph
+1818   12.500 AA/SwissEph
+1820   12.300 AA/SwissEph
+1822   12.000 AA/SwissEph
+1824   11.400 AA/SwissEph
+1826   10.600 AA/SwissEph
+1828    9.600 AA/SwissEph
+1830    8.600 AA/SwissEph
+1832    7.500 AA/SwissEph
+1834    6.600 AA/SwissEph
+1836    6.000 AA/SwissEph
+1838    5.700 AA/SwissEph
+1840    5.600 AA/SwissEph
+1842    5.700 AA/SwissEph
+1844    5.900 AA/SwissEph
+1846    6.200 AA/SwissEph
+1848    6.500 AA/SwissEph
+1850    6.800 AA/SwissEph
+1852    7.100 AA/SwissEph
+1854    7.300 AA/SwissEph
+1856    7.500 AA/SwissEph
+1858    7.700 AA/SwissEph
+1860    7.800 AA/SwissEph
+1862    7.880 AA/SwissEph
+1864    7.540 AA/SwissEph
+1866    6.400 AA/SwissEph
+1868    5.410 AA/SwissEph
+1870    2.920 AA/SwissEph
+1872    1.610 AA/SwissEph
+1874   -1.280 AA/SwissEph
+1876   -3.240 AA/SwissEph
+1878   -4.540 AA/SwissEph
+1880   -5.110 AA/SwissEph
+1882   -5.420 AA/SwissEph
+1884   -5.460 AA/SwissEph
+1886   -5.790 AA/SwissEph
+1888   -5.640 AA/SwissEph
+1890   -5.660 AA/SwissEph
+1892   -6.010 AA/SwissEph
+1894   -6.640 AA/SwissEph
+1896   -6.470 AA/SwissEph
+1898   -5.760 AA/SwissEph
+1900   -3.740 AA/SwissEph
+1902   -1.540 AA/SwissEph
+1904    2.640 AA/SwissEph
+1906    5.370 AA/SwissEph
+1908    7.750 AA/SwissEph
+1910   10.460 AA/SwissEph
+1912   13.360 AA/SwissEph
+1914   16.010 AA/SwissEph
+1916   18.240 AA/SwissEph
+1918   20.250 AA/SwissEph
+1920   21.160 AA/SwissEph
+1922   22.410 AA/SwissEph
+1924   23.490 AA/SwissEph
+1926   23.860 AA/SwissEph
+1928   24.340 AA/SwissEph
+1930   24.020 AA/SwissEph
+1932   23.870 AA/SwissEph
+1934   23.860 AA/SwissEph
+1936   23.730 AA/SwissEph
+1938   23.960 AA/SwissEph
+1940   24.330 AA/SwissEph
+1942   25.300 AA/SwissEph
+1944   26.240 AA/SwissEph
+1946   27.280 AA/SwissEph
+1948   28.250 AA/SwissEph
+1950   29.150 AA/SwissEph
+1952   29.970 AA/SwissEph
+1954   30.720 AA/SwissEph
+1956   31.350 AA/SwissEph
+1958   32.180 AA/SwissEph
+1960   33.150 AA/SwissEph
+1962   34.000 AA/SwissEph
+1964   35.030 AA/SwissEph
+1966   36.540 AA/SwissEph
+1968   38.290 AA/SwissEph
+1970   40.180 AA/SwissEph
+1972   42.230 AA/SwissEph
+1974   44.484 IERS observed
+1976   46.457 IERS observed
+1978   48.534 IERS observed
+1980   50.539 IERS observed
+1982   52.167 IERS observed
+1984   53.788 IERS observed
+1986   54.871 IERS observed
+1988   55.820 IERS observed
+1990   56.855 IERS observed
+1992   58.309 IERS observed
+1994   59.984 IERS observed
+1996   61.629 IERS observed
+1998   62.966 IERS observed
+2000   63.829 IERS observed
+2002   64.300 IERS observed
+2004   64.574 IERS observed
+2006   64.845 IERS observed
+2008   65.457 IERS observed
+2010   66.070 IERS observed
+2012   66.603 IERS observed
+2014   67.281 IERS observed
+2016   68.102 IERS observed
+2018   68.968 IERS observed
+2020   69.361 IERS observed
+2022   69.294 IERS observed
+2024   69.175 IERS observed
+2026   69.110 IERS observed
+2028   69.386 extrapolated
+2030   69.692 extrapolated
+2032   70.023 extrapolated
+2034   70.379 extrapolated
+2036   70.760 extrapolated
+2038   71.165 extrapolated
+2040   71.595 extrapolated
+2042   72.050 extrapolated
+2044   72.530 extrapolated
+2046   73.035 extrapolated
+2048   73.564 extrapolated
+2050   74.118 extrapolated
