@@ -29,6 +29,7 @@ C-----------------------------------------------------------------------
       SAVE
       LMENU = .FALSE.
       LFILE = .FALSE.
+      CALL ICEINIT
       CALL CUROFF
    10 CALL MENU
    20 CALL GETKEY (IASC, ISCAN)
@@ -89,6 +90,7 @@ C-----------------------------------------------------------------------
       DOUBLE PRECISION D, A, B, S
       INTEGER*4 N, IZ
       LOGICAL LEX
+      CHARACTER*4096 ICEFILE
       CHARACTER*36 TITLE(7)
       CHARACTER*55 MENUT(11)
       SAVE
@@ -115,10 +117,10 @@ C-----------------------------------------------------------------------
       WRITE (*, 9000)
       WRITE (*, 9010) TITLE
       IF (LMENU) GO TO 30
-      INQUIRE (FILE='ICE.DFT', EXIST=LEX)
+      INQUIRE (FILE=ICEFILE('ICE.DFT'), EXIST=LEX)
       CALL DFTMSG (LEX)
       IF (LEX) THEN
-         OPEN (1, FILE='ICE.DFT')
+         OPEN (1, FILE=ICEFILE('ICE.DFT'))
          READ (1, 9020, IOSTAT=IOS) D, A, B, S, N, IZ
       END IF
       IF (IOS .EQ. 0) THEN

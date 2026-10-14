@@ -83,3 +83,8 @@ cd /Users/chris/Downloads/ice051-source/data
 ```
 
 A reliable launcher or configurable data-directory implementation remains to be added. The exact Sun test passes with the correct working directory; Moon, planet, and full navigational-star tests and the original-DOS comparison under DOSBox-X remain outstanding. No ephemeris or ΔT mathematics were changed.
+
+
+## Native runtime patch — October 13, 2026
+
+The current source fixes the two native-runtime issues: macOS console conversion and automatic data discovery. The original failure and baseline results above describe the historical pre-patch executable. See `NATIVE_RUNTIME.md` for launch instructions, the data-directory override, and validation results. The original DOSBox-X numerical comparison remains outstanding.

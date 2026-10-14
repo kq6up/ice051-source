@@ -12,6 +12,7 @@ C-----------------------------------------------------------------------
       INTEGER*4 IERR
       LOGICAL LFILE
       INCLUDE 'catlg.inc'
+      CHARACTER*4096 ICEFILE
       CHARACTER*16 CFILE, CATFIL(10), SRA, SDEC
       CHARACTER*8 CCNT, C1, C2, C3
       CHARACTER*60 CATID
@@ -31,7 +32,7 @@ C-----------------------------------------------------------------------
       IF (ICAT .GT. 9) ICAT = 10
       IF (ICAT .GE. 1) CFILE = CATFIL(ICAT)
       IF (ICAT .LE. 0) ICAT = 99
-      OPEN (11, FILE=CFILE, ACCESS='DIRECT', FORM='BINARY', RECL=68,
+      OPEN (11, FILE=ICEFILE(CFILE), ACCESS='DIRECT', FORM='BINARY', RECL=68,
      &      STATUS='OLD', IOSTAT=IOS)
       IF (IOS .NE. 0) THEN
          WRITE (*, 9020)

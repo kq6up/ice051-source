@@ -1,7 +1,8 @@
 # ICE 0.51 — recovered source
 
 GitHub baseline: [contents, macOS run instructions, and reverting changes](docs/BASELINE.md).
-The working Mac executable is preserved under `snapshots/macos-arm64/ice`; run it from `data/`.
+The original Mac executable is preserved under `snapshots/macos-arm64/ice`.
+The current build fixes macOS terminal characters and locates its data automatically; see [native runtime notes](docs/NATIVE_RUNTIME.md).
 
 
 Fortran source for the U.S. Naval Observatory's **Interactive Computer
@@ -65,7 +66,7 @@ terminal the code page 437 screen is converted for display (set `ICE_CP437=1`
 to turn this off). Files the program writes stay in code page 437, as the
 original wrote them.
 
-`./build.sh --deltat2026` builds the program with the 2026 ΔT table and with
+`./build.sh --deltat2026` builds `build/ice-dt2026` separately from `build/ice`, with the 2026 ΔT table and with
 the decimal year in F7 Navigation corrected to IY + IM/12 + ID/365.25 (the
 original divides the day by 30). This build matches the patched
 `ICE_DT26.EXE` screen for screen.

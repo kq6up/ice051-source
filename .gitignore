@@ -1,5 +1,7 @@
 .DS_Store
 /build/
 /data/ice
+/data/ice-dt2026
+/data/libiceconsole.dylib
 __pycache__/
 *.pyc

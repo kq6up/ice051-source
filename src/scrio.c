@@ -25,6 +25,14 @@
 #include <termios.h>
 #include <sys/syscall.h>
 
+/* Mach-O uses two-level symbol binding: libgfortran calls libSystem
+   directly, so an executable symbol named write/read cannot override it.
+   Use dyld interposition below for calls made by the runtime. */
+#ifdef __APPLE__
+#define write ice_console_write
+#define read ice_console_read
+#endif
+
 /* ------------------------------------------------------------------ */
 /* screen output, optionally code page 437 -> UTF-8                     */
 static const unsigned short cp437[128] = {
@@ -46,7 +54,10 @@ static void decide(void)
 {
     const char *v;
     utf8 = 0;
-    if (getenv("ICE_CP437") || getenv("ICE_KEYS")) return;
+#ifdef __APPLE__
+    utf8 = 1;  /* macOS terminals use Unicode even without locale variables */
+#endif
+    if (getenv("ICE_CP437") || getenv("ICE_KEYS")) { utf8 = 0; return; }
     if (!(v = getenv("LC_ALL")) || !*v)
         if (!(v = getenv("LC_CTYPE")) || !*v) v = getenv("LANG");
     if (v) {
@@ -248,3 +259,14 @@ void mspaus_(char *msg, int len)
     (void) r;
     fresh = 0;
 }
+
+#ifdef __APPLE__
+#undef write
+#undef read
+#define ICE_INTERPOSE(replacement, original) \
+    static const struct { const void *new_fn; const void *old_fn; } \
+    ice_interpose_##original __attribute__((used, section("__DATA,__interpose,interposing"))) = \
+        { (const void *)&replacement, (const void *)&original }
+ICE_INTERPOSE(ice_console_write, write);
+ICE_INTERPOSE(ice_console_read, read);
+#endif

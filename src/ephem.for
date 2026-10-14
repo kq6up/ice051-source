@@ -183,6 +183,7 @@ C-----------------------------------------------------------------------
       COMMON /EPHPAR/ T0, PER, PB, PC, E1, E2, SC, E3, F1, F2, CA, CB,
      &     START, SPAN, XM1, XM2, XM3, XM4, CE, SE, NCREF, NX, IREC
       DOUBLE PRECISION OBL
+      CHARACTER*4096 ICEFILE
       CHARACTER*30 NAME
       INTEGER*4 I, J, NB, NC, NXX
       LOGICAL LEX
@@ -193,9 +194,9 @@ C-----------------------------------------------------------------------
       GO TO 20
    10 WRITE (*,*) 'File PARAM.DAT not found on active disk.'
       PAUSE 'Insert correct disk and press "Enter" when ready.'
-   20 INQUIRE (FILE='PARAM.DAT', EXIST=LEX)
+   20 INQUIRE (FILE=ICEFILE('PARAM.DAT'), EXIST=LEX)
       IF (.NOT. LEX) GO TO 10
-      OPEN (20, FILE='PARAM.DAT', FORM='UNFORMATTED')
+      OPEN (20, FILE=ICEFILE('PARAM.DAT'), FORM='UNFORMATTED')
       DO 50 I = 1, 11
          IF (I .EQ. 1) READ (20) IDATE
          READ (20, END=99) NAME, NB, NREF, NC, NXX
@@ -233,6 +234,7 @@ C-----------------------------------------------------------------------
       DOUBLE PRECISION D1, D2
       INTEGER*4 I, J, K, NUP, NDAT
       LOGICAL LEX
+      CHARACTER*4096 ICEFILE
       CHARACTER*9 FNAME(24)
       SAVE
       DATA FNAME / 'EPH01.DAT', 'EPH02.DAT', 'EPH03.DAT', 'EPH04.DAT',
@@ -258,9 +260,9 @@ C-----------------------------------------------------------------------
    30 WRITE (*,*) 'Ephemeris file ', FNAME(K), ' not found on ',
      &            'active disk.'
       PAUSE 'Insert correct disk and press "Enter" when ready.'
-   40 INQUIRE (FILE=FNAME(K), EXIST=LEX)
+   40 INQUIRE (FILE=ICEFILE(FNAME(K)), EXIST=LEX)
       IF (.NOT. LEX) GO TO 30
-      OPEN (K+20, FILE=FNAME(K), FORM='UNFORMATTED')
+      OPEN (K+20, FILE=ICEFILE(FNAME(K)), FORM='UNFORMATTED')
       READ (K+20) IHDR, JHDR
       NUP = IHDR(IHDR(1)) + 1
       DO 50 I = 1, NUP, 64
