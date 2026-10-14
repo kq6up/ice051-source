@@ -53,33 +53,205 @@ The `.for` files in `src/` are UTF-8, so the box-drawing characters can be
 read and edited. The build converts them to code page 437, which is what the
 program writes.
 
-## Building and running (Linux, gfortran)
+## Getting started: Linux, macOS, and DOS
+
+Install the prerequisites listed for your platform below, then clone the repository:
 
 ```sh
-./build.sh                                  # -> build/ice
-python3 setup_data.py /path/to/ice data     # convert PARAM.DAT, EPHnn.DAT; copy the rest
-cd data && ../build/ice
+git clone https://github.com/kq6up/ice051-source.git
+cd ice051-source
 ```
 
-The keys are F1–F10 as on the PC, and Alt-F1 redraws the menu. On a UTF-8
-terminal the code page 437 screen is converted for display (set `ICE_CP437=1`
-to turn this off). Files the program writes stay in code page 437, as the
-original wrote them.
+### Linux (native GNU Fortran build)
 
-`./build.sh --deltat2026` builds `build/ice-dt2026` separately from `build/ice`, with the 2026 ΔT table and with
-the decimal year in F7 Navigation corrected to IY + IM/12 + ID/365.25 (the
-original divides the day by 30). This build matches the patched
-`ICE_DT26.EXE` screen for screen.
+You need GNU Fortran (`gfortran`), a C compiler available as `gcc`, and
+Python 3. For Debian/Ubuntu, install them with:
 
-`PARAM.DAT` and `EPHnn.DAT` are Microsoft unformatted sequential files, so
-`setup_data.py` re-frames them for gfortran. The catalogs are direct-access
-files and are used as they are.
+```sh
+sudo apt update
+sudo apt install git build-essential gfortran python3
+```
 
-The `dos/` copies have now been compiled with Microsoft FORTRAN 4.10 and
-MASM 5.10 in DOSBox-X on Apple Silicon macOS. Separate rebuilt executables
-with the vintage and 2026 Delta T models, preparation and build scripts, and
-the confirmed Sun-test results are in [the DOS workflow](dosbox/README.md).
-This workflow leaves the Linux and macOS build files unchanged.
+Other distributions can install equivalent packages through their package
+manager; see the [Fortran installation guide](https://fortran-lang.org/learn/os_setup/install_gfortran/).
+From the repository directory:
+
+```sh
+./build.sh                    # build/ice: vintage Delta T model
+./run.sh
+```
+
+For the updated model, build and run its separate executable:
+
+```sh
+./build.sh --deltat2026        # build/ice-dt2026
+./run.sh --deltat2026
+```
+
+The tracked `data/` directory is already converted for GNU Fortran. No data
+conversion is needed for a normal checkout. The native path resolver supports
+Linux; these latest launch instructions have been exercised on macOS, while
+a fresh Linux run has not yet been repeated.
+
+### macOS (native GNU Fortran build)
+
+Install Apple's command-line tools and GNU Fortran. With
+[Homebrew](https://brew.sh/) already installed:
+
+```sh
+xcode-select --install        # only if the command-line tools are absent
+brew install gcc python      # GNU Fortran is included in the gcc formula
+./build.sh
+./run.sh
+```
+
+After building, you can also double-click **Start ICE.command** in Finder.
+That launcher selects the vintage model. To select the updated model:
+
+```sh
+./build.sh --deltat2026
+./run.sh --deltat2026
+```
+
+The [Homebrew gcc formula](https://formulae.brew.sh/formula/gcc) supplies
+`gfortran`; Apple's `gcc` command supplies the C compiler used by the script.
+The macOS build creates `build/libiceconsole.dylib` for terminal character
+conversion. Keep it beside an executable if you relocate that executable.
+Rebuild on a different computer to link against its installed runtime libraries.
+
+### DOS (historical or rebuilt executable)
+
+Install [DOSBox-X](https://dosbox-x.com/) with `dosbox-x` available on PATH,
+and Python 3 for the host-side launcher. From the repository:
+
+```sh
+python3 dosbox/prepare.py
+python3 dosbox/lab.py launch                 # rebuilt vintage model
+python3 dosbox/lab.py launch --deltat2026     # updated 2026 Delta T model
+python3 dosbox/lab.py launch --original      # supplied historical executable
+```
+
+Preparation creates a local `dosbox/drive_c/` with separate program directories
+and the original DOS data. It refuses to overwrite an existing drive.
+The prebuilt DOS executables need no compiler. To rebuild them with Microsoft
+FORTRAN 4.10 and MASM 5.10, follow [the DOS workflow](dosbox/README.md).
+The Microsoft compiler distribution is not included in this Git repository.
+
+In the separate complete DOS lab ZIP, double-click **Start DOS ICE.command**,
+**Start DOS ICE 2026.command**, or **Start Historical DOS ICE.command**.
+Keep the extracted lab folder together. Its launchers locate their files from
+any working directory.
+
+On a real DOS system, extract `reference/ice.zip` into a directory. For a
+rebuilt version, replace that directory's `ICE.EXE` with either
+`dosbox/bin/ice-vintage.exe` or `dosbox/bin/ice-dt2026.exe`, naming it `ICE.EXE`.
+Run it with that directory as the current DOS directory so it finds its data.
+The live rebuild and Sun checks used DOSBox-X on Apple Silicon macOS; real
+DOS hardware has not been tested here.
+
+### Keys, data, and model selection
+
+Use F1 for initial values, F7 for celestial navigation, and F10 to quit.
+On a Mac keyboard you may need Fn with the function key. Inside DOSBox-X,
+type `EXIT` after F10 to close the remaining DOS prompt. Alt-F1 redraws the
+menu. Native terminal output uses UTF-8; `ICE_CP437=1` selects raw DOS bytes.
+Output files keep the original CP437 encoding.
+
+Native `run.sh` can be invoked by absolute path from any working directory.
+It finds the converted data automatically; set `ICE_DATA_DIR` to select a
+specific data folder. Relative output files are written in the directory
+from which you launch the program. See [native runtime notes](docs/NATIVE_RUNTIME.md).
+
+Keep the native and DOS data formats separate. `PARAM.DAT` and `EPHnn.DAT`
+in the original DOS package use Microsoft Fortran record framing. If you need
+to prepare another native data folder, first extract the original DOS package
+into a separate directory, then run:
+
+```sh
+python3 setup_data.py /path/to/original-dos-data /path/to/new-native-data
+```
+
+Do not pass the already converted native `data/` as this script's input.
+The catalogs are copied unchanged.
+
+Both platforms' updated builds select the existing 2026 Delta T replacement
+and change F7's decimal-year day divisor from 30 to 365.25. Other documented
+historical bugs remain; further fixes are deferred. The DOS workflow leaves
+the Linux and macOS build files unchanged.
+
+## Editing your local initial values: ICE.DFT
+
+**Yes: `ICE.DFT` is a hand-editable plain-text file.** ICE reads it at startup.
+Changes accepted on the F1 screen last for the current session; they are not
+saved back to this file. Edit the file with ICE closed, save it as plain text,
+and restart to load your defaults.
+
+Edit the copy associated with the program you run:
+
+| Program | Defaults file |
+|---|---|
+| Native Linux/macOS | `data/ICE.DFT`, or `ICE.DFT` in your selected `ICE_DATA_DIR` |
+| Prepared DOS vintage build | `dosbox/drive_c/ICE/ICE.DFT` |
+| Prepared DOS 2026 build | `dosbox/drive_c/ICE26/ICE.DFT` |
+| Prepared historical DOS reference | `dosbox/drive_c/ORIGINAL/ICE.DFT` |
+| Extracted DOS lab ZIP | The corresponding `drive_c/ICE/`, `drive_c/ICE26/`, or `drive_c/ORIGINAL/` copy |
+
+The six lines have this order. Columns are counted from 1:
+
+| Line | Value | Numeric field | Meaning |
+|---|---|---|---|
+| 1 | Starting date/time | Columns 18-32 | `YYYYMMDD.HHMMSS`, e.g. `20261013.230000` |
+| 2 | Latitude | Columns 18-32 | Decimal degrees: north positive, south negative |
+| 3 | Longitude | Columns 18-32 | Decimal degrees: east positive, west negative |
+| 4 | Tabulation interval | Columns 18-32 | `1.000000` means one day; calendar-style intervals are also accepted |
+| 5 | Number of positions/lines | Columns 24-26 | Integer count for tables |
+| 6 | Time zone | Columns 24-26 | Integer offset: local time minus UTC, in hours |
+
+For example, this starts at 34 N, 117 W, with a UTC-7 time-zone setting.
+These are illustrative values from the Sun test, not a change to your files:
+
+```text
+Starting date =  20261013.230000
+Latitude      =        34.000000
+Longitude     =      -117.000000
+Time step     =         1.000000
+Num. of positions =      1
+Time zone     =         -7
+```
+
+Preserve the leading spaces and alignment; replace only the numeric values.
+Use spaces rather than tabs, decimal points rather than commas, and no degree
+symbols or N/S/E/W suffixes. Convert minutes to decimal degrees: 34 degrees
+30 minutes N is `34.500000`. The text labels before the numeric fields are
+ignored by the reader. Do not append comments inside the numeric fields.
+
+The time-zone value is a fixed offset: use `-7` for UTC-7 or `-8` for UTC-8.
+ICE does not change it automatically for daylight saving time.
+**F7 navigation uses UTC and ignores this zone offset.** Enter a UTC date/time
+for a Sun shot even if line 6 contains your local zone. The zone setting is
+used for F6 rise/set times; other tables label their own time scales.
+The startup date is fixed until you edit it or change it through F1; it does
+not automatically follow the computer clock.
+
+### Keep personal settings out of Git
+
+The native `data/ICE.DFT` is tracked, so editing it makes a local Git change.
+For personal defaults without modifying tracked files, copy the native data
+folder outside the checkout and select that copy:
+
+```sh
+cp -R data ../ice-local-data
+# Hand-edit ../ice-local-data/ICE.DFT in a plain-text editor.
+ICE_DATA_DIR="$(pwd)/../ice-local-data" ./run.sh --deltat2026
+```
+
+Use an absolute `ICE_DATA_DIR` path when launching from elsewhere. The prepared
+DOS `dosbox/drive_c/` is already ignored by Git, and the extracted DOS lab is
+separate from the checkout. You can hand-edit those defaults locally without
+committing them. Data preparation may replace defaults when recreating a
+folder, so keep a copy of your personalized `ICE.DFT` before rebuilding a drive
+or rerunning data conversion. Compiling the native program alone leaves the
+defaults file intact.
 
 ## How it was checked
 
