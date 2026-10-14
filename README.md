@@ -89,9 +89,9 @@ For the updated model, build and run its separate executable:
 ```
 
 The tracked `data/` directory is already converted for GNU Fortran. No data
-conversion is needed for a normal checkout. The native path resolver supports
-Linux; these latest launch instructions have been exercised on macOS, while
-a fresh Linux run has not yet been repeated.
+conversion is needed for a normal checkout. The user has also tested the
+Linux version successfully on **Slackware ARM64 (aarch64)** and reports that
+it works well. The native macOS build and launchers have been tested here.
 
 ### macOS (native GNU Fortran build)
 
