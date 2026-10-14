@@ -75,10 +75,11 @@ original divides the day by 30). This build matches the patched
 `setup_data.py` re-frames them for gfortran. The catalogs are direct-access
 files and are used as they are.
 
-The `dos/` copies are written for Microsoft FORTRAN 4.x, large model, with
-MASM for `SCRIO.ASM`. They have **not** been compiled with that compiler here.
-Expect to adjust details: for example, `FORM='BINARY'` and the `$` edit
-descriptor are MS extensions the source keeps.
+The `dos/` copies have now been compiled with Microsoft FORTRAN 4.10 and
+MASM 5.10 in DOSBox-X on Apple Silicon macOS. Separate rebuilt executables
+with the vintage and 2026 Delta T models, preparation and build scripts, and
+the confirmed Sun-test results are in [the DOS workflow](dosbox/README.md).
+This workflow leaves the Linux and macOS build files unchanged.
 
 ## How it was checked
 

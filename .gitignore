@@ -5,3 +5,4 @@
 /data/libiceconsole.dylib
 __pycache__/
 *.pyc
+/dosbox/drive_c/

@@ -1,0 +1,12 @@
+{
+  "source_commit": "0b6c36ad547147def4a99e939c904bea3c30d5d4",
+  "compiler": "Microsoft FORTRAN 4.10",
+  "assembler": "MASM 5.10",
+  "linker": "FORTRAN distribution linker 5.01.20",
+  "flags": "/c /AL /FPi /Od /4I4",
+  "emulator": "DOSBox-X 2026.10.01 on Apple Silicon macOS",
+  "binaries": {
+    "ice-dt2026.exe": "bb5cd92a2f73bdb4974853e894a22c5e0bd8f84a838782bc42660ec37077cb1b",
+    "ice-vintage.exe": "20d15ba08042a88525a6c5e22551af4241c443ffe3dc600045904fb92d132c1e"
+  }
+}

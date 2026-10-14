@@ -1,0 +1,20 @@
+{
+  "ICE": {
+    "sha256": "983589af32846226840009be0fd0571942d1abfcb704299a6146e995867a6ba1",
+    "bytes": 604,
+    "output": "\r\n         Celestial Navigation Data for 2026 Oct 13 at 23 00 00 UT (GMT)\r\n                              Delta T =  94.4 seconds \r\n                 For Assumed Location:  Longitude   W 117 00.0\r\n                                        Latitude    N  34 00.0\r\n\r\n                     Almanac Data                   \u2502    Altitude Corrections\r\n Object       GHA        Dec         Hc       Zn    \u2502 Refr    SD     PA     Sum\r\n              \u00b0   '      \u00b0   '      \u00b0   '       \u00b0   \u2502   '      '      '      '\r\n SUN        168 28.0   s 8 03.3   +25 39.6   239.2  \u2502 -2.1   16.1     .1   14.1\r\n ARIES        7 31.0\r\n",
+    "host_exit": 0
+  },
+  "ORIGINAL": {
+    "sha256": "983589af32846226840009be0fd0571942d1abfcb704299a6146e995867a6ba1",
+    "bytes": 604,
+    "output": "\r\n         Celestial Navigation Data for 2026 Oct 13 at 23 00 00 UT (GMT)\r\n                              Delta T =  94.4 seconds \r\n                 For Assumed Location:  Longitude   W 117 00.0\r\n                                        Latitude    N  34 00.0\r\n\r\n                     Almanac Data                   \u2502    Altitude Corrections\r\n Object       GHA        Dec         Hc       Zn    \u2502 Refr    SD     PA     Sum\r\n              \u00b0   '      \u00b0   '      \u00b0   '       \u00b0   \u2502   '      '      '      '\r\n SUN        168 28.0   s 8 03.3   +25 39.6   239.2  \u2502 -2.1   16.1     .1   14.1\r\n ARIES        7 31.0\r\n",
+    "host_exit": 0
+  },
+  "ICE26": {
+    "sha256": "125dabf503fc0dd1f4452b528a4ef8a7f3a777ec78b8b21450e3952d70068b34",
+    "bytes": 604,
+    "output": "\r\n         Celestial Navigation Data for 2026 Oct 13 at 23 00 00 UT (GMT)\r\n                              Delta T =  69.2 seconds \r\n                 For Assumed Location:  Longitude   W 117 00.0\r\n                                        Latitude    N  34 00.0\r\n\r\n                     Almanac Data                   \u2502    Altitude Corrections\r\n Object       GHA        Dec         Hc       Zn    \u2502 Refr    SD     PA     Sum\r\n              \u00b0   '      \u00b0   '      \u00b0   '       \u00b0   \u2502   '      '      '      '\r\n SUN        168 28.0   s 8 03.3   +25 39.6   239.2  \u2502 -2.1   16.1     .1   14.1\r\n ARIES        7 31.0\r\n",
+    "host_exit": 0
+  }
+}

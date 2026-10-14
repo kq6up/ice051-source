@@ -4,3 +4,4 @@
 /reference/** -text
 /snapshots/** -text
 /tools/** -text
+/dosbox/batch/** -text whitespace=cr-at-eol
